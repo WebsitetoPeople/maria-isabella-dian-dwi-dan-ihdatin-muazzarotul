@@ -1,0 +1,72 @@
+html>
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<hr>
+	<h3><p align="center"> | PENDIDIKAN GEOGRAFI |
+	<h3><p align="center"> | UNIVERSITAS NEGERI SURABAYA |
+	<hr></p>
+	<body bgcolor='white' text='black'>
+	<h2><font color="blue"><u>WebsiteSpasial.com</font></h2></u>
+	<hr>
+	<h3> STATISTIK SPASIAL </H3>
+	<h3> LUAS PENGGUNAAN LAHAN KECAMATAN RUNGKUT, GUNUNG ANYAR, DAN TENGGILIS MEJOYO</H3>
+	<h3>Disusun Untuk Memenuhi Tugas Mata Kuliah Sistem Informasi Geografis Lanjut (SIG-L)</H3>
+	<h3>Nama kelompok
+		<ul>
+			<li>Dian Dwi Darmawan Putra (22040274037)</li>
+			<li>Maria Isabella Yovita W. (22040274046)</li>
+			<li>Ihdatin Muazzarotul K. (22040274106)</li>
+		</ul>
+	</H3>
+<body>
+	<div style="width: 80%; margin: auto;">
+        <canvas id="perubahanLahanChart"></canvas>
+    </div>
+</body>
+<script>
+	
+// Data perubahan penggunaan lahan
+         var dataPerubahanLahan = [
+            { jenis: 'Pemukiman Tidak Teratur', pl2019: 1777, pl2023: 973 },
+            { jenis: 'Pemukiman Teratur', pl2019: 127, pl2023: 249 },
+            { jenis: 'Tambak', pl2019: 887, pl2023:  947},
+            { jenis: 'Sawah', pl2019: 146, pl2023: 111 },
+            { jenis: 'Bangunan Universitas', pl2019: 56, pl2023: 280 },
+            { jenis: 'Waduk', pl2019: 8, pl2023: 8 },
+            { jenis: 'Industri', pl2019: 247, pl2023: 249 },
+			{ jenis: 'Lahan Kosong', pl2019: 353, pl2023: 313 },
+			{ jenis: 'Mangrove', pl2019: 85, pl2023: 90},
+            // ... tambahkan data lainnya sesuai kebutuhan ...
+        ];
+
+        // Inisialisasi chart
+        var ctx = document.getElementById('perubahanLahanChart').getContext('2d');
+        var perubahanLahanChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dataPerubahanLahan.map(item => item.jenis),
+                datasets: [{
+                    label: 'PL 2019',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    data: dataPerubahanLahan.map(item => item.pl2019)
+                }, {
+                    label: 'PL 2023',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(99, 255, 132, 1)',
+                    borderWidth: 1,
+                    data: dataPerubahanLahan.map(item => item.pl2023)
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+		
+</script>
+</html>
